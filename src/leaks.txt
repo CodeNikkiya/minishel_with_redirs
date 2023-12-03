@@ -1,0 +1,17 @@
+
+leaks Report Version: 4.0
+Process 5227: 377 nodes malloced for 308 KB
+Process 5227: 9 leaks for 352 total leaked bytes.
+
+    9 (352 bytes) << TOTAL >>
+      1 (128 bytes) ROOT LEAK: 0x7f92ce7040d0 [128]
+
+      3 (64 bytes) ROOT LEAK: 0x7f92ce704160 [16]
+         1 (32 bytes) 0x7f92ce704180 [32]  length: 30  "something$PWDXNBFUBYDSakaraban"
+         1 (16 bytes) 0x7f92ce704170 [16]
+
+      1 (48 bytes) ROOT LEAK: 0x7f92ce704280 [48]
+      1 (48 bytes) ROOT LEAK: 0x7f92ce7042f0 [48]
+      1 (32 bytes) ROOT LEAK: 0x7f92cf104090 [32]  length: 31  "'something$PWD'XNBFUBYDS"$USER""
+      1 (16 bytes) ROOT LEAK: 0x7f92ce704150 [16]
+      1 (16 bytes) ROOT LEAK: 0x7f92ce7042b0 [16]
