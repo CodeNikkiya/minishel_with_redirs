@@ -6,7 +6,7 @@
 /*   By: npavelic <npavelic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:36:17 by npavelic          #+#    #+#             */
-/*   Updated: 2023/12/03 22:18:13 by npavelic         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:44:05 by npavelic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	alloc_out_types(int *sizes, t_cmd **command_table, int* numeric_map)
 	///printf("\nd--i-i-i-  %s\n", (*command_table)[1].out_doc_types);
 	///printf("\nd--i-i-i-  %s\n", (*command_table)[2].out_doc_types);
 	free(sizes);
+
 }
 
 
@@ -200,6 +201,7 @@ void	make_outputs_arrays(t_cmd ***cmnd_table, char *input, int* nu_map)
 	//printf("\ng--i-i-i-  %s\n", (**cmnd_table)[1].out_doc_types);
 	//printf("\ng--i-i-i-  %s\n", (**cmnd_table)[2].out_doc_types);
 	allocate_output_docs_arrays(cmnd_table);
+
 	//printf("\n--i-i-i-  %s\n", (**cmnd_table)[0].out_doc_types);
 	//printf("\n--i-i-i-  %s\n", (**cmnd_table)[1].out_doc_types);
 	//printf("\n--i-i-i-  %s\n", (**cmnd_table)[2].out_doc_types);
@@ -217,23 +219,27 @@ void	make_outputs_arrays(t_cmd ***cmnd_table, char *input, int* nu_map)
 
 }
 
-void	truncate_outputs(t_cmd	***c, t_env *e)
+
+void    truncate_outputs(t_cmd ***c, t_env *e)
 {
-	int	j;
-	int	k;
+	int    j;
+	int    k;
 
 	j = 0;
 	while (j < (**c)[0].num_of_structs)
 	{
 		k = 0;
-		while ((*c)[j]->output_docs[k])
+		printf("string is %s\n", "test");
+		printf("string is %s\n", (**c)[j].output_docs[k]);
+		while ((**c)[j].output_docs[k])
 		{
-			(*c)[j]->output_docs[k] = handle_word((*c)[j]->output_docs[k], e);
+			printf("J is %i\n", j);
+			if (ft_strlen((**c)[j].output_docs[k]))
+				(**c)[j].output_docs[k] = handle_word((**c)[j].output_docs[k], e);
 			k++;
 		}
 		j++;
 	}
-
 }
 
 
@@ -248,6 +254,7 @@ void	redirs_into_struct(t_cmd	***command_table, char *input, t_env *envs, int* n
 	//printf("\n--i-i-i-  %s\n", (**command_table)[2].out_doc_types);
 	//printf ("\n%s\n", (*command_table)[0]->out_doc_types);
 	//printf("\nAnd we got here after maop n count!!!\n");
+
 	make_outputs_arrays(command_table, input, numeric_map);
 	truncate_outputs(command_table, envs);
 

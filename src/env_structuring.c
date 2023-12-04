@@ -6,7 +6,7 @@
 /*   By: npavelic <npavelic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 15:55:36 by npavelic          #+#    #+#             */
-/*   Updated: 2023/12/02 18:57:05 by npavelic         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:45:37 by npavelic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@
 
 static void    splitting_envs (t_env *e_vars, int i, int j, int k)
 {
-
     while (e_vars->env_var[++i])
     {
 		j = 0;

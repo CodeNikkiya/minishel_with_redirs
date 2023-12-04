@@ -6,7 +6,7 @@
 /*   By: npavelic <npavelic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:36:17 by npavelic          #+#    #+#             */
-/*   Updated: 2023/12/03 21:19:42 by npavelic         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:57:25 by npavelic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,6 +230,33 @@ void	make_inputs_arrays(t_cmd ***cmnd_table, char *input, int* nu_map)
 
 }
 
+
+void    truncate_inputs(t_cmd ***c, t_env *e)
+{
+	int    j;
+	int    k;
+
+	j = 0;
+	while (j < (**c)[0].num_of_structs)
+	{
+		k = 0;
+		printf("string is %s\n", "test");
+		printf("truncate input, map is %s\n", (**c)[j].inp_doc_types);
+		printf("string is %s\n", (**c)[j].input_docs[k]);
+		while ((**c)[j].input_docs[k])
+		{
+			printf("J is %i\n", j);
+			if ((ft_strlen((**c)[j].input_docs[k]))
+				&& ((**c)[j].inp_doc_types[k] == 'I'))
+				(**c)[j].input_docs[k] = handle_word((**c)[j].input_docs[k], e);
+			k++;
+		}
+		j++;
+	}
+}
+
+// ls >tttt >rrrrr >>eee <erere <<2222
+
 void	redirs_into_struct_2_input(t_cmd	***command_table, char *input, t_env *envs, int* numeric_map)
 {
 	(void)envs;
@@ -241,5 +268,5 @@ void	redirs_into_struct_2_input(t_cmd	***command_table, char *input, t_env *envs
 	//printf ("\n%s\n", (*command_table)[0]->inp_doc_types);
 	//printf("\nAnd we got here after maop n count!!!\n");
 	make_inputs_arrays(command_table, input, numeric_map);
-
+	truncate_inputs (command_table, envs);
 }

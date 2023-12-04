@@ -6,7 +6,7 @@
 /*   By: npavelic <npavelic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:03:02 by npavelic          #+#    #+#             */
-/*   Updated: 2023/12/03 22:16:51 by npavelic         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:55:24 by npavelic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,9 +207,9 @@ void	test_func_print_comm_table(t_cmd **command_table)
 	while (j < command_table[0]->num_of_structs)
 	{
 		printf ("\n\ncom table nr : %i and the output map is \'%s\'\n output files:\n", j, (*command_table)[j].out_doc_types);
-		print_string_array((*command_table)[j].output_docs);
+		print_string_array((*command_table + j)->output_docs);
 		printf ("\n\ncom table nr : %i and the input map is \'%s\'\n input files:\n", j, (*command_table)[j].inp_doc_types);
-		print_string_array((*command_table)[j].input_docs);
+		print_string_array((*command_table + j)->input_docs);
 		j++;
 	}
 }
